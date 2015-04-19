@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OAuth</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% unless current_user %>
+	<p><%= link_to 'Sign in via twitter', '/auth/twitter' %></p>
+	<p><%= link_to 'Sign in via facebook', '/auth/facebook' %></p>
+<% else %>
+	<p>Signed in as: <%= current_user.name %> !!!</p>
+	<p><%= link_to 'Sign Out', signout_path %>/</p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
